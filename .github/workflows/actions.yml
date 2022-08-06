@@ -4,8 +4,8 @@
 name: Get evaluations
 
 on:
-  push:
-    branches: [ "main" ]
+#   push:
+#     branches: [ "main" ]
   schedule:
     - cron: '0 10 * * 0,3,4,6'
 
@@ -34,5 +34,5 @@ jobs:
         BASIC: ${{ secrets.BASIC }}
         COURSES: ${{ secrets.COURSES }}
         MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
-        totalRequest: 1
+        totalRequest: 500
       run: node getEvaluations.js
