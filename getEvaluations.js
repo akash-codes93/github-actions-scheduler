@@ -43,6 +43,7 @@ let setEvaluation = async (data, account) => {
 
 let checkEvaluationExists = async (account) => {
     const token = tokenMapper[account]
+    console.log("token:", token)
     this.data = {}
 
     try {
@@ -65,7 +66,7 @@ let checkEvaluationExists = async (account) => {
                 'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36'
             }
         })
-
+        console.log("statusCode:", response.statusCode)
         if (response.statusCode !== 200) {
             return {
                 "status": false,
