@@ -1,4 +1,5 @@
 let request = require('async-request')
+let sendMail = require('./sendMail')
 
 const tokenMapper = {
     "basic": process.env['BASIC'],
@@ -35,6 +36,8 @@ let setEvaluation = async (data, account) => {
 
         console.log(response.data);
         console.log("Evaluator is set: " + account)
+        sendMail(account);
+        console.log("Mail sent!")
     } catch (e) {
         console.log("Error in setEvaluation: ")
     }
@@ -104,13 +107,18 @@ let start = async () => {
             if (evaluationTask["status"] === true) {
                 await setEvaluation(evaluationTask["data"], "basic")
             }
+
+            evaluationTask = await checkEvaluationExists("courses");
+            if (evaluationTask["status"] === true) {
+                await setEvaluation(evaluationTask["data"], "courses")
+            }
         } catch (e) {
             console.log("Error in start function: " + e)
         }
 
         totalRequest -= 1
         const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
-        await delay(15000)
+        await delay(10000)
     }
 
 }
