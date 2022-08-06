@@ -1,8 +1,8 @@
 let request = require('async-request')
 
 const tokenMapper = {
-    "basic": process.env['basic'],
-    "courses": process.env['courses'],
+    "basic": process.env['BASIC'],
+    "courses": process.env['COURSES'],
 }
 
 let setEvaluation = async (data, account) => {
