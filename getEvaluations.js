@@ -105,7 +105,7 @@ let start = async () => {
                 await setEvaluation(evaluationTask["data"], "basic")
             }
         } catch (e) {
-
+            console.log("Error in start function: " + e)
         }
 
         totalRequest -= 1
