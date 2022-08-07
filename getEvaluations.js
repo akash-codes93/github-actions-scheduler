@@ -105,12 +105,16 @@ let start = async () => {
         try {
             let evaluationTask = await checkEvaluationExists("basic");
             if (evaluationTask["status"] === true) {
-                await setEvaluation(evaluationTask["data"], "basic")
+                if (evaluationTask["data"]["message"] !== "Returned Assigned Evaluation Rounds Successfully"){
+                    await setEvaluation(evaluationTask["data"], "basic")
+                }
             }
 
             evaluationTask = await checkEvaluationExists("courses");
             if (evaluationTask["status"] === true) {
-                await setEvaluation(evaluationTask["data"], "courses")
+                if (evaluationTask["data"]["message"] !== "Returned Assigned Evaluation Rounds Successfully"){
+                    await setEvaluation(evaluationTask["data"], "courses")
+                }
             }
         } catch (e) {
             console.log("Error in start function: " + e)
