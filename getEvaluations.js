@@ -70,6 +70,7 @@ let checkEvaluationExists = async (account) => {
         })
 
         if (response.statusCode !== 200) {
+            console.log("Response status code is not 200: type: " + account)
             return {
                 "status": false,
                 "data": this.data
