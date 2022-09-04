@@ -78,8 +78,7 @@ let checkEvaluationExists = async (account) => {
         }
 
         this.data = JSON.parse(response.body)
-        console.log(this.data)
-
+        // console.log(this.data)
         if (this.data["data"].length === 0) {
             console.log("No task to evaluate: " + account)
             return {
